@@ -13,12 +13,14 @@ html = """<ul class="list-group">
            <span class="pull-right">2017</span>
         </li>
  </ul>"""
-html = """<span content="5500000" itemprop="price" class="styles-module-size_xxxl-A2qfi" data-marker="item-view/item-price">5&nbsp;500&nbsp;000<span itemprop="priceCurrency" content="RUB" class="styles-module-size_xxxl-A2qfi">&nbsp;₽&nbsp;</span></span>"""
+html = """<span class="style-item-address__string-wt61A">Новосибирская обл., Новосибирск, Театральная ул., 9А</span>"""
 
 soup = BeautifulSoup(html, 'html.parser')
 
 need = {}
 
+
+print(soup.find('span', class_="style-item-address__string-wt61A").contents[0])
 
 def parameter_format(s):
     s = s.replace("\n", "")

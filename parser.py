@@ -23,6 +23,8 @@ proxy = {
 s = requests.Session()
 s.mount('https://', HTTP20Adapter())
 request = s.get(url)
+
+
 # headers = {
 #     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}
 
@@ -49,6 +51,8 @@ def parse(r):
         param_value = {}
         price = parameter_format(params_bs.find('span', class_="styles-module-size_xxxl-A2qfi").contents[0])
         param_value["Цена"] = price
+        location = parameter_format(params_bs.find('span', class_="style-item-address__string-wt61A").contents[0])
+        param_value["Расположение"] = location
         for li_tag in params_bs.find_all('ul', class_="params-paramsList-_awNW"):
             for span_tag in li_tag.find_all('li', class_="params-paramsList__item-_2Y2O"):
                 field = parameter_format(span_tag.find('span', class_="styles-module-noAccent-nZxz7").text)
@@ -89,4 +93,3 @@ while True:
         parse(request)
     except:
         break
-
