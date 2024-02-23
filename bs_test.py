@@ -15,6 +15,9 @@ html = """<ul class="list-group">
  </ul>"""
 html = """<span class="style-item-address__string-wt61A">Новосибирская обл., Новосибирск, Театральная ул., 9А</span>"""
 
+
+html = open("what.txt", "r", encoding="utf-8").read()
+
 soup = BeautifulSoup(html, 'html.parser')
 
 need = {}
